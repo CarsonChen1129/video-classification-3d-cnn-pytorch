@@ -80,7 +80,7 @@ if __name__=="__main__":
     opt.mean = get_mean()
     opt.arch = '{}-{}'.format(opt.model_name, opt.model_depth)
     opt.sample_size = 112
-    opt.sample_duration = 16
+    opt.sample_duration = opt.num_frame_steps
     opt.n_classes = 400
 
     model = generate_model(opt)
