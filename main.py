@@ -57,7 +57,10 @@ def extract_feats(opt, model):
 
                 result = classify_video('tmp', video, class_names, model, opt)
                 # print(type(result))
-                np.save(outfile, result)
+                if result is None:
+                    print("result for video[ {} ]is empty".format(video_id))
+                else:
+                    np.save(outfile, result)
 
                 subprocess.call('rm -rf tmp', stdout=ffmpeg_log, stderr=ffmpeg_log,shell=True)
             else:

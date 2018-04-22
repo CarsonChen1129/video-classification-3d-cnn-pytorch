@@ -29,7 +29,11 @@ def classify_video(video_dir, video_name, class_names, model, opt):
         video_outputs.append(outputs.cpu().data)
         # video_segments.append(segments)
 
-    video_outputs = torch.cat(video_outputs)
+    if len(video_outputs) != 0:
+        video_outputs = torch.cat(video_outputs)
+        return video_outputs.numpy()
+    else:
+        return None
     # video_segments = torch.cat(video_segments)
     # results = {
     #     'video': video_name,
@@ -50,4 +54,4 @@ def classify_video(video_dir, video_name, class_names, model, opt):
     #
     #     results['clips'].append(clip_results)
 
-    return video_outputs.numpy()
+
